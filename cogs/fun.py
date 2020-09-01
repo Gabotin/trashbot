@@ -1,9 +1,11 @@
 import discord
 import urbandict
+import random
 import json
 import urllib
 import random
 import datetime
+from rhcooc import moment_list
 from urllib import request
 from discord.ext import commands
 import data.constants as tt
@@ -30,11 +32,22 @@ class fun(commands.Cog):
 			await self.send_log(log = f"'{ctx.author}' in '{ctx.guild.name}' said '{message}'")
 			await ctx.send(message)
 		except Exception as error: 
-			await ctx.send(tt.msg_e.format(error))
-
+			await ctx.send(tt.msg_e.format(error)
+	@commands.command()
+	async def rhcooc(self,  ctx, *, moment:str):
+		try:
+		       if ctx.guild.id != '695967253900034048' or '718547049678635129':
+			        await ctx.send("hi :)")
+			elif ctx.guild.id == '695967253900034048' or '718547049678635129':	   
+	                         moment = random.choice(list(moment_dict.values()))
+		                 await ctx.send(moment)
+		       except Exception as error:
+		                 await ctx.send(tt.msg_e.format(error)
+				   
 	@commands.command()
 	async def urban(self, ctx, *, word:str):
 		try:
+				     
 			url_encoded_word = urllib.parse.quote(word)
 			url = f"{urban_api_url}/define?term={url_encoded_word}"
 			urban_json = request.urlopen(url).read().decode('utf8')
@@ -55,6 +68,7 @@ class fun(commands.Cog):
 
 	@commands.command()
 	# this uses a really bad urbandictionary package but its funny so im keeping it
+	#nope
 	async def urbanshit(self, ctx, *, word:str):
 		try:
 			urb = urbandict.define(word)

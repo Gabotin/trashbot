@@ -12,6 +12,7 @@ import data.constants as tt
 
 # 		========================
 
+
 class errors(commands.Cog):
 	def __init__(self, bot):
 		self.bot = bot
@@ -25,7 +26,7 @@ class errors(commands.Cog):
 #			return
 
 		error = getattr(error, 'original', error)
-
+#damn this looks good af!
 		if isinstance(error, commands.CommandNotFound):
 			return
 
